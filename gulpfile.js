@@ -55,21 +55,29 @@ gulp.task('build', function() {
   bundle()
 });
 
-gulp.task('serve', function(done) {
-  gulp.src('')
-    .pipe(server({
-      livereload: {
-        enable: true,
-        filter: function(filePath, cb) {
-          if(/main.js/.test(filePath)) {
-            cb(true)
-          } else if(/style.css/.test(filePath)){
-            cb(true)
-          }
-        }
-      },
-      open: true
-    }));
+// gulp.task('serve', function(done) {
+//   gulp.src('')
+//     .pipe(server({
+//       livereload: {
+//         enable: true,
+//         filter: function(filePath, cb) {
+//           if(/main.js/.test(filePath)) {
+//             cb(true)
+//           } else if(/style.css/.test(filePath)){
+//             cb(true)
+//           }
+//         }
+//       },
+//       open: true
+//     }));
+// });
+
+gulp.task('serveprod', function() {
+  connect.server({
+    root: '.',
+    port: process.env.PORT || 5000, // localhost:5000
+    livereload: false
+  });
 });
 
 gulp.task('sass', function () {
@@ -83,12 +91,4 @@ gulp.task('default', ['build', 'serve', 'sass', 'watch']);
 
 gulp.task('watch', function () {
   gulp.watch('./sass/**/*.scss', ['sass']);
-});
-
-gulp.task('serveprod', function() {
-  connect.server({
-    root: '.',
-    port: process.env.PORT || 5000, // localhost:5000
-    livereload: false
-  });
 });
