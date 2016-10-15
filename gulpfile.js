@@ -84,3 +84,11 @@ gulp.task('default', ['build', 'serve', 'sass', 'watch']);
 gulp.task('watch', function () {
   gulp.watch('./sass/**/*.scss', ['sass']);
 });
+
+gulp.task('serveprod', function() {
+  connect.server({
+    root: '.',
+    port: process.env.PORT || 5000, // localhost:5000
+    livereload: false
+  });
+});
