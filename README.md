@@ -5,8 +5,6 @@ This is a React + Reflux application to fetch image/video data from imgur API an
 
 ###Getting Started###
 
-There are two methods for getting started with this repo.
-
 Checkout this repo, install dependencies, then start the gulp process with the following:
 
 ```
